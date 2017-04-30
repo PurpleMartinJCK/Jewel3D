@@ -1,6 +1,7 @@
 // Copyright (c) 2017 Emilian Cioca
 #pragma once
 #include "Resource.h"
+#include "Jewel3D/Reflection/Reflection.h"
 
 #include <string_view>
 
@@ -16,6 +17,7 @@ namespace Jwl
 	// To be rendered, this must be set on an Entity's Text component.
 	class Font : public Resource<Font>
 	{
+		REFLECT_PRIVATE;
 	public:
 		Font();
 		~Font();
@@ -57,3 +59,11 @@ namespace Jwl
 		static unsigned VAO;
 	};
 }
+
+REFLECT_SHAREABLE(Jwl::Font)
+REFLECT(Jwl::Font) < Resource >,
+	MEMBERS<
+		REF_MEMBER(width)< ReadOnly >,
+		REF_MEMBER(height)< ReadOnly >
+	>
+REF_END;

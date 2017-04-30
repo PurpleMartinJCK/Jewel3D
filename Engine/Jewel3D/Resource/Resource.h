@@ -3,9 +3,15 @@
 #include "Shareable.h"
 #include "Jewel3D/Application/FileSystem.h"
 #include "Jewel3D/Application/Logging.h"
+#include "Jewel3D/Reflection/Reflection.h"
 
 #include <string>
 #include <unordered_map>
+
+namespace Reflection
+{
+	struct Resource : MetaTagBase {};
+}
 
 namespace Jwl
 {

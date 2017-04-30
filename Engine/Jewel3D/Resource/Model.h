@@ -1,7 +1,8 @@
 // Copyright (c) 2017 Emilian Cioca
 #pragma once
 #include "Resource.h"
-#include "Jewel3D\Math\Vector.h"
+#include "Jewel3D/Math/Vector.h"
+#include "Jewel3D/Reflection/Reflection.h"
 
 namespace Jwl
 {
@@ -15,6 +16,7 @@ namespace Jwl
 	//	Tangent : 3
 	class Model : public Resource<Model>
 	{
+		REFLECT_PRIVATE;
 	public:
 		~Model();
 
@@ -51,3 +53,13 @@ namespace Jwl
 		unsigned numVertices = 0;
 	};
 }
+
+REFLECT_SHAREABLE(Jwl::Model)
+REFLECT(Jwl::Model) < Resource >,
+	MEMBERS<
+		REF_MEMBER(hasUvs)< ReadOnly >,
+		REF_MEMBER(hasNormals)< ReadOnly >,
+		REF_MEMBER(numFaces)< ReadOnly >,
+		REF_MEMBER(numVertices)< ReadOnly >
+	>
+REF_END;
